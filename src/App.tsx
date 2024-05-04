@@ -1,8 +1,11 @@
+import JobSearch from './components/job/JobSearch';
+import Container from './components/ui/container';
+
 function App() {
 	return (
-		<div>
-			<h1>Hello World</h1>
-		</div>
+		<Container>
+			<JobSearch />
+		</Container>
 	);
 }
 

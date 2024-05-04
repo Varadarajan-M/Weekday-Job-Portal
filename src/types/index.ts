@@ -2,8 +2,8 @@ export interface JobDetails {
 	companyName: string;
 	jobRole: string;
 	location: string;
-	maxExp: number;
-	minExp: number;
+	maxExp: number | null;
+	minExp: number | null;
 	maxJdSalary: number | null;
 	minJdSalary: number | null;
 	salaryCurrencyCode: string;

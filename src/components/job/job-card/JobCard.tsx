@@ -62,11 +62,11 @@ const JobCard = ({ job }: JobCardProps) => {
 			</Box>
 			<Button
 				variant='text'
-				className={styles['job-card__show-more']}
+				className={styles['job-card__more-details']}
 				disableTouchRipple
 				disableRipple
 			>
-				Show more
+				View Job
 			</Button>
 			<Box className={styles['job-card__experience']}>
 				<h4 className={styles['job-card__experience-header']}>
@@ -83,7 +83,7 @@ const JobCard = ({ job }: JobCardProps) => {
 						root: `${styles['job-card__action']} ${styles['job-card__action--primary']}`,
 					}}
 				>
-					Easy Apply
+					⚡ Easy Apply
 				</Button>
 				<Button
 					variant='text'

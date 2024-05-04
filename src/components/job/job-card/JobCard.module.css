@@ -61,14 +61,15 @@
 	z-index: 1;
 }
 
-.job-card__show-more {
+.job-card__more-details {
 	margin-top: -3rem;
 	padding: 1rem;
 	font-family: 'Lexend', sans-serif !important;
 	text-transform: none;
+	font-size: 1.1rem;
 }
 
-.job-card__show-more:hover {
+.job-card__more-details:hover {
 	cursor: pointer;
 	background-color: transparent;
 }
