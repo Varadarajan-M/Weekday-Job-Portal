@@ -1,3 +1,8 @@
+export type PaginationArgs = {
+	limit: number;
+	offset: number;
+};
+
 export interface JobDetails {
 	companyName: string;
 	jobRole: string;
@@ -11,4 +16,9 @@ export interface JobDetails {
 	jdLink: string;
 	jdUid: string;
 	logoUrl: string;
+}
+
+export interface JobFetchAPIResponse {
+	jdList: JobDetails[];
+	totalCount: number;
 }
