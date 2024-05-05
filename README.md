@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+## Weekday Job Portal Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Prerequisites
 
-Currently, two official plugins are available:
+- Node JS - v18 or above
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Run locally
 
-## Expanding the ESLint configuration
+- Navigate to Project Directory in terminal.
+- Run `npm i` to install dependencies.
+- Run `npm run dev` to start the development server.
+- Application should be running in http://localhost:3000
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Tech stack
 
-- Configure the top-level `parserOptions` property like this:
+- ReactJs
+- Redux
+- CSS
+- Material UI
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Requirements
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Job Cards: Each job listing should be displayed as a card containing the following information:
+
+   - Job title
+   - Company name
+   - Location
+   - Job description (limited to a certain number of characters with an option to expand)
+   - Experience required
+   - Apply button/link
+
+2. Filters: Implement filters to allow users to refine the job listings based on:
+
+   - Min experience
+   - Company name
+   - Location
+   - Remote/on-site
+   - Tech stack
+   - Role
+   - Min base pay
+
+3. Infinite Scroll: Implement infinite scroll to load additional job listings as the user scrolls down the page. The platform should fetch and display more jobs automatically without requiring the user to click on a "Load More" button.
+
+4. Responsive Design: Ensure that the platform is responsive and works well on different screen sizes, including mobile devices (Optional)
+
+### Some Remarks
+
+- Some of the search filters for eg: `Tech stack`, `No of Employees` - is not implemented as the API response was not having data to filter it. Rest of the filters are implemented.
+
+- Only the Timestamp in Job card is hardcoded as the data was unavailable in API response.
