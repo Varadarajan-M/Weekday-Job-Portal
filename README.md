@@ -6,6 +6,7 @@
 
 ### Run locally
 
+- Clone the repo with `git clone https://github.com/Varadarajan-M/Weekday-Job-Portal.git`
 - Navigate to Project Directory in terminal.
 - Run `npm i` to install dependencies.
 - Create a `.env` file at the root of the project as per the `.env.example` file, Value should be https://api.weekday.technology
