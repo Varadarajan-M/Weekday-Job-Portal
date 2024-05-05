@@ -1,19 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchJobs as fetchJobsAPI } from '../../api/jobs';
 import { JobDetails, JobFetchAPIResponse } from '../../types';
+import {
+	checkLocationMatch,
+	checkMinExpMatch,
+	checkMinSalaryMatch,
+	checkRoleMatch,
+	getNonEmptyFilters,
+} from './utils';
+
+type JobFilter = Partial<keyof JobDetails> & { search?: string };
 
 interface JobsState {
 	data: JobDetails[];
+	sourceData: JobDetails[];
 	total: number;
 	status: 'idle' | 'pending' | 'succeeded' | 'failed';
 	error: string | null;
+	filters: Record<keyof JobFilter, string[]>;
 }
 
 const initialState: JobsState = {
 	data: [],
+	sourceData: [],
 	total: 0,
 	status: 'idle',
 	error: null,
+	filters: {} as JobsState['filters'],
 };
 
 export const fetchJobs = createAsyncThunk('jobs/fetchJobs', fetchJobsAPI);
@@ -21,7 +34,50 @@ export const fetchJobs = createAsyncThunk('jobs/fetchJobs', fetchJobsAPI);
 const jobsSlice = createSlice({
 	name: 'jobs',
 	initialState,
-	reducers: {},
+	reducers: {
+		applyFilter(state) {
+			const nonEmptyFilters = getNonEmptyFilters(
+				state.filters as Record<string, string[]>,
+			);
+
+			if (!nonEmptyFilters?.length) {
+				state.data = state.sourceData;
+				return;
+			}
+
+			const filteredJobs: JobDetails[] = [];
+
+			const pushIfNotPresent = (job: JobDetails) => {
+				if (filteredJobs?.find((j) => j?.jdUid === job?.jdUid)) return;
+				filteredJobs.push(job);
+			};
+
+			for (const job of state.sourceData) {
+				const filters = Object.fromEntries(nonEmptyFilters) as Record<
+					keyof JobDetails,
+					string[]
+				>;
+				const locationMatch = checkLocationMatch(job, filters);
+				const minExpMatch = checkMinExpMatch(job, filters);
+				const roleMatch = checkRoleMatch(job, filters);
+				const minSalaryMatch = checkMinSalaryMatch(job, filters);
+				const searchMatch = job.companyName
+					?.toLowerCase()
+					.includes(state.filters.search?.[0]?.toLowerCase() || '');
+
+				if (minExpMatch && locationMatch && roleMatch && minSalaryMatch && searchMatch) {
+					pushIfNotPresent(job);
+				}
+			}
+
+			state.data = filteredJobs;
+		},
+		setJobFilter(state, action) {
+			const { filterName, value } = action.payload;
+			if (filterName) state.filters[filterName as keyof JobFilter] = value;
+			jobsSlice.caseReducers.applyFilter(state);
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchJobs.pending, (state) => {
@@ -34,8 +90,13 @@ const jobsSlice = createSlice({
 					action.payload as unknown as JobFetchAPIResponse;
 				const offset = action.meta.arg?.offset;
 
-				state.data = offset === 0 ? jdList : state.data.concat(jdList);
+				const newList = offset === 0 ? jdList : state.sourceData.concat(jdList);
+
+				state.data = newList;
+				state.sourceData = newList;
 				state.total = totalCount;
+
+				jobsSlice.caseReducers.applyFilter(state);
 			})
 			.addCase(fetchJobs.rejected, (state, action) => {
 				state.status = 'failed';
@@ -44,7 +105,7 @@ const jobsSlice = createSlice({
 	},
 });
 
-export const jobsActions = jobsSlice.actions;
+export const { setJobFilter } = jobsSlice.actions;
 
 export default jobsSlice.reducer;
 

@@ -22,7 +22,7 @@ const getSalaryText = (
 	};
 	const postfix = {
 		INR: 'LPA',
-		USD: 'Per Annum',
+		USD: 'K Per Annum',
 	};
 
 	return `Estimated Salary: ${

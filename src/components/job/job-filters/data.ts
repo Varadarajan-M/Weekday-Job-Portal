@@ -238,12 +238,12 @@ export const languages = [
 ];
 
 export const minBasePay = [
-	{ id: 'ol', label: 'OL' },
-	{ id: '10l', label: '10L' },
-	{ id: '20l', label: '20L' },
-	{ id: '30l', label: '30L' },
-	{ id: '40l', label: '40L' },
-	{ id: '50l', label: '50L' },
-	{ id: '60l', label: '60L' },
-	{ id: '70l', label: '70L' },
+	{ id: '0', label: '0' },
+	{ id: '10', label: '10L' },
+	{ id: '20', label: '20L' },
+	{ id: '30', label: '30L' },
+	{ id: '40', label: '40L' },
+	{ id: '50', label: '50L' },
+	{ id: '60', label: '60L' },
+	{ id: '70', label: '70L' },
 ];

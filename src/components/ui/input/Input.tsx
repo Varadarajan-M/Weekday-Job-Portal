@@ -7,9 +7,9 @@ const Input: React.FC<TextFieldProps> = (props) => {
 			{...props}
 			sx={{
 				'& .MuiInputBase-input': {
-					padding: '8px 12px',
+					padding: '8px 10px',
 					borderRadius: '8px',
-					minWidth: '170px',
+					minWidth: '180px',
 					fontFamily: 'Lexend',
 					fontSize: '1rem',
 				},

@@ -20,6 +20,10 @@ const InfiniteScroll = ({ onIntersection }: InfiniteScrollProps) => {
 		} else {
 			observer.disconnect();
 		}
+
+		return () => {
+			observer.disconnect();
+		};
 	}, [elementRef, onIntersection]);
 
 	return <div ref={elementRef} />;

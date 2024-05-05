@@ -1,49 +1,51 @@
+import useJobFilters from '../../../hooks/jobs/useJobFilters';
 import Dropdown from '../../ui/dropdown';
 import Input from '../../ui/input';
 import styles from './JobFilters.module.css';
-import {
-	experience,
-	languages,
-	minBasePay,
-	noOfEmployees,
-	remote,
-	roles,
-} from './data';
+import { experience, minBasePay, remote, roles } from './data';
 
 const filters = [
 	{
 		isMulti: true,
 		label: 'Roles',
 		options: roles,
+		filterName: 'jobRole',
 	},
-	{
-		isMulti: true,
-		label: 'No of Employees',
-		options: noOfEmployees,
-	},
+	// {
+	// 	isMulti: true,
+	// 	label: 'No of Employees',
+	// 	options: noOfEmployees,
+	// 	filterName: null, // This values are not returned by api for filtering
+	// },
 	{
 		isMulti: false,
 		label: 'Experience',
 		options: experience,
+		filterName: 'minExp',
 	},
 	{
 		isMulti: true,
 		label: 'Remote',
 		options: remote,
+		filterName: 'location',
 	},
-	{
-		isMulti: true,
-		label: 'Tech stack',
-		options: languages,
-	},
+	// {
+	// 	isMulti: true,
+	// 	label: 'Tech stack',
+	// 	options: languages,
+	// 	filterName: null, // This values are not returned by api for filtering
+	// },
 	{
 		isMulti: false,
-		label: 'Min. Base pay',
+		label: 'Minimum Base Pay Salary',
 		options: minBasePay,
+		filterName: 'minJdSalary',
 	},
 ];
 
 const JobFilters = () => {
+	const { handleJobFilter, handleSearch } = useJobFilters();
+
 	return (
 		<div className={styles['job-filters']}>
 			{filters.map((filter) => (
@@ -52,10 +54,14 @@ const JobFilters = () => {
 					multiSelect={filter.isMulti}
 					label={filter.label}
 					options={filter.options}
-					onChange={(d) => console.log(d)}
+					onChange={(option) => handleJobFilter(filter?.filterName, option)}
 				/>
 			))}
-			<Input placeholder='Search Company Name' />
+			<Input
+				type='search'
+				placeholder='Search Company Name'
+				onChange={(e) => handleSearch(e.target.value)}
+			/>
 		</div>
 	);
 };
