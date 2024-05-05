@@ -1,6 +1,7 @@
 .dropdown__input-root {
 	padding: 2px !important;
-	min-width: 300px;
+	min-height: 30px;
+	min-width: 150px;
 }
 .dropdown__tag-close-icon {
 	padding: 0 4px;
@@ -12,6 +13,7 @@
 	border-bottom-right-radius: 0.4rem;
 	font-weight: 600;
 	color: black;
+	margin-top: -0.2rem !important;
 }
 
 .dropdown__tag-close-icon:hover {
@@ -21,18 +23,21 @@
 .dropdown__label {
 	margin-bottom: 0.5rem;
 	font-weight: 400;
-	font-size: 0.9rem;
+	font-size: 1rem;
 }
 
 .dropdown__option {
 	color: black;
 	padding-left: 1.8rem !important;
-	font-size: 0.9rem;
+	font-size: 1.1rem;
 	text-transform: capitalize;
 }
 
 .dropdown__group-label {
-	line-height: 2.8rem;
+	line-height: 2.5rem;
 	color: grey;
 	font-weight: 600;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
 }

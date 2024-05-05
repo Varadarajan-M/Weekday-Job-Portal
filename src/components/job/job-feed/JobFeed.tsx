@@ -14,8 +14,8 @@ const JobFeed = () => {
 
 	return (
 		<Fragment>
+			{isLoading && jobs?.length === 0 && <CenteredLoader />}
 			<Box className={styles['job-feed']}>
-				{isLoading && jobs?.length === 0 && <CenteredLoader />}
 				{jobs.map((job) => (
 					<JobCard key={job.jdUid} job={job} />
 				))}

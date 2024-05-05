@@ -1,0 +1,21 @@
+.job-search {
+	display: flex;
+	transition: all 0.5s ease;
+	gap: 3rem;
+	width: 100%;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+	.job-search {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.job-search {
+		flex-direction: column;
+		align-items: center;
+	}
+}
