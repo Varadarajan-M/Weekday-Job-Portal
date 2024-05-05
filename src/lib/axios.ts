@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-	baseURL: 'https://api.weekday.technology',
+	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
 api.interceptors.response.use(

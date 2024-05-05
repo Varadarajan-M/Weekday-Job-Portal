@@ -8,6 +8,7 @@
 
 - Navigate to Project Directory in terminal.
 - Run `npm i` to install dependencies.
+- Create a `.env` file at the root of the project as per the `.env.example` file, Value should be https://api.weekday.technology
 - Run `npm run dev` to start the development server.
 - Application should be running in http://localhost:3000
 
