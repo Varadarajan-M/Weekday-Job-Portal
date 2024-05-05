@@ -52,7 +52,7 @@ const jobsSlice = createSlice({
 				filteredJobs.push(job);
 			};
 
-			for (const job of state.sourceData) {
+			for (const job of state?.sourceData || []) {
 				const filters = Object.fromEntries(nonEmptyFilters) as Record<
 					keyof JobDetails,
 					string[]
@@ -65,7 +65,13 @@ const jobsSlice = createSlice({
 					?.toLowerCase()
 					.includes(state.filters.search?.[0]?.toLowerCase() || '');
 
-				if (minExpMatch && locationMatch && roleMatch && minSalaryMatch && searchMatch) {
+				if (
+					minExpMatch &&
+					locationMatch &&
+					roleMatch &&
+					minSalaryMatch &&
+					searchMatch
+				) {
 					pushIfNotPresent(job);
 				}
 			}

@@ -40,6 +40,19 @@
 	font-size: 1.3rem;
 }
 
+.job-card__placeholder-img {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	background-color: rgba(170, 170, 177, 0.345);
+	margin: 0 0.05rem;
+	opacity: 0.5;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .job-card__position {
 	font-weight: 400;
 	font-size: 1rem;
@@ -96,10 +109,14 @@
 .job-card__action {
 	width: 100%;
 	font-weight: 600;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	letter-spacing: normal;
 	padding: 8px 18px;
 	font-family: 'Lexend', sans-serif !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.3rem;
 }
 
 .job-card__action--primary {

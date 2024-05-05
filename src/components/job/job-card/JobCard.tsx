@@ -92,6 +92,12 @@ const JobCard = ({ job }: JobCardProps) => {
 						root: `${styles['job-card__action']} ${styles['job-card__action--secondary']}`,
 					}}
 				>
+					<span className={styles['job-card__placeholder-img']}>
+						{job.companyName?.charAt(0)}
+					</span>
+					<span className={styles['job-card__placeholder-img']}>
+						{job.companyName?.charAt(1)}
+					</span>
 					Unlock referal asks
 				</Button>
 			</Box>
